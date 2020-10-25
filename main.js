@@ -4,19 +4,19 @@ function openSettings() {
 document.getElementById("settings-button").addEventListener('click', openSettings)
 
 var userName;
-localStorage.getItem('receivedName');
+userName = localStorage.getItem('receivedName');
 
 if (userName == null) {
-  userName = "friend";
+   userName = "friend";
 }
-document.getElementById("name-form").addEventListener('submit', function(e) {
-   console.log({e})
+document.getElementById("name-form").addEventListener('submit', function (e) {
+   console.log({ e })
    changeName();
    e.preventDefault()
 });
 function saveName() {
-   userName= localStorage.setItem('receivedName', userName);
-   
+   userName = localStorage.setItem('receivedName', userName);
+   getGreeting()
 }
 
 
@@ -27,7 +27,8 @@ function changeName() {
 
 
 function getGreeting() {
-   document.getElementById("greeting").innerHTML  = `Hello, ${userName}. Enjoy your day!`;
+   userName = localStorage.getItem('receivedName');
+   document.getElementById("greeting").innerHTML = `Hello, ${userName}. Enjoy your day!`;
 }
 
 getGreeting()
